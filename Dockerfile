@@ -3,18 +3,13 @@ MAINTAINER Karl Banke <banke@mecom.de>
 
 RUN groupadd -r node && useradd -m -g node node
 
-# Gosu
-ENV GOSU_VERSION 1.10
-
-# MongoDB
-ENV MONGO_VERSION 3.4.4
-ENV MONGO_MAJOR 3.4
-ENV MONGO_PACKAGE mongodb-org
-
-# build directories
-ENV APP_SOURCE_DIR /opt/meteor/src
-ENV APP_BUNDLE_DIR /opt/meteor/dist
-ENV BUILD_SCRIPTS_DIR /opt/build_scripts
+ENV GOSU_VERSION=1.10 \
+    MONGO_VERSION=3.4.4 \
+    MONGO_MAJOR=3.4 \
+    MONGO_PACKAGE="mongodb-org" \
+    APP_SOURCE_DIR="/opt/meteor/src" \
+    APP_BUNDLE_DIR="/opt/meteor/dist" \
+    BUILD_SCRIPTS_DIR="/opt/build_scripts"
 
 # Add entrypoint and build scripts
 COPY scripts $BUILD_SCRIPTS_DIR
@@ -57,14 +52,14 @@ ONBUILD RUN cd $APP_SOURCE_DIR && \
        $BUILD_SCRIPTS_DIR/post-build-cleanup.sh
 
 # Default values for Meteor environment variables
-ENV ROOT_URL http://localhost
-ENV MONGO_URL mongodb://127.0.0.1:27017/meteor
-ENV PORT 3000
+ENV ROOT_URL="http://localhost" \
+    MONGO_URL="mongodb://127.0.0.1:27017/meteor" \
+    PORT=3000
 
 EXPOSE 3000
 
 WORKDIR $APP_BUNDLE_DIR/bundle
 
 # start the app
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/opt/build_scripts/entrypoint.sh"]
 CMD ["node", "main.js"]
