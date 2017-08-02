@@ -21,6 +21,9 @@ printf "\n[-] Building Meteor application...\n\n"
 mkdir -p $APP_BUNDLE_DIR
 meteor build --directory $APP_BUNDLE_DIR
 
+printf "\nmeteor test --once --driver-package=dispatch:mocha\n\n"
+meteor test --once --driver-package=dispatch:mocha
+
 # run npm install in bundle
 printf "\n[-] Running npm install in the server bundle...\n\n"
 cd $APP_BUNDLE_DIR/bundle/programs/server/
