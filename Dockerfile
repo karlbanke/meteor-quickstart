@@ -30,7 +30,7 @@ ARG TOOL_NODE_FLAGS
 ENV TOOL_NODE_FLAGS $TOOL_NODE_FLAGS
 
 ARG METEOR_VERSION
-ENV METEOR_VERSION ${METEOR_VERSION:-1.5}
+ENV METEOR_VERSION ${METEOR_VERSION:-1.5.1}
 
 # optionally custom apt dependencies at app build time
 RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y $APT_GET_INSTALL; fi
@@ -61,5 +61,5 @@ EXPOSE 3000
 WORKDIR $APP_BUNDLE_DIR/bundle
 
 # start the app
-ENTRYPOINT ["/opt/build_scripts/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 CMD ["node", "main.js"]
