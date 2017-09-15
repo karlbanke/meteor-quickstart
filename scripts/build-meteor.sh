@@ -24,7 +24,7 @@ meteor build --directory $APP_BUNDLE_DIR
 printf "\nStarting mongo for tests\n\n"
 mongod --storageEngine=wiredTiger > /dev/null 2>&1 &
 printf "\nmeteor test --once --driver-package=dispatch:mocha\n\n"
-meteor test --once --driver-package=dispatch:mocha
+meteor test --once --driver-package=dispatch:mocha --settings meteor_settings.json
 
 # run npm install in bundle
 printf "\n[-] Running npm install in the server bundle...\n\n"
