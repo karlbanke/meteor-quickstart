@@ -22,7 +22,7 @@ building the container.
 
 ### Meteor Version
 
-Currently this container preinstalls Meteor 1.5.1. 
+Currently this container preinstalls Meteor 1.6. 
 
 ### Run
 
@@ -68,8 +68,8 @@ To use any of them, create a `launchpad.conf` in the root of your app and add an
 # (default: undefined)
 APT_GET_INSTALL="curl git wget"
 
-# Install a custom Node version (default: latest 4.x)
-NODE_VERSION=4.8.3
+# Install a custom Node version (default: latest 8.x)
+NODE_VERSION=8.9.0
 
 # Installs the latest version of each (default: all false)
 ```
@@ -81,7 +81,7 @@ If you prefer not to have a config file in your project, your other option is to
 ```sh
 docker build \
   --build-arg APT_GET_INSTALL="curl git wget" \
-  --build-arg NODE_VERSION=4.7.2 \
+  --build-arg NODE_VERSION=8.9.0 \
   -t myorg/myapp:latest .
 ```
 
