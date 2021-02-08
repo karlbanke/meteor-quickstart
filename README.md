@@ -8,6 +8,12 @@ Add the following to a `Dockerfile` in the root of your app:
 FROM kbanke/meteor-quickstart:latest
 ```
 
+If you want to run on Meteor 2.0 with MongoDB 4.2.8, pick this instead:
+
+```Dockerfile
+FROM kbanke/meteor-quickstart:meteor-2-0
+```
+
 Then you can build the image with:
 
 ```sh
@@ -23,6 +29,8 @@ building the container.
 ### Meteor Version
 
 Currently this container preinstalls Meteor 1.6. 
+
+There is a separate Dockerfile that preinstalls Meteor 2.6 alongside Mongo 4.2.8, see above.
 
 ### Run
 
