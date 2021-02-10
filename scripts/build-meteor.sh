@@ -12,6 +12,11 @@ export METEOR_ALLOW_SUPERUSER=true
 
 cd $APP_SOURCE_DIR
 
+# Owner of /opt/nodejs and /opt/meteor has to be node to enable correct global installation
+chown -R node:node /opt/nodejs /opt/meteor
+# Enabling implicit installation of fibers
+sudo su - node -s /bin/bash -c 'npm install --global node-gyp'
+
 # Install app deps
 printf "\n[-] Running npm install in app directory...\n\n"
 meteor npm install
@@ -23,8 +28,8 @@ meteor build --directory $APP_BUNDLE_DIR
 
 printf "\nStarting mongo for tests\n\n"
 mongod --storageEngine=wiredTiger > /dev/null 2>&1 &
-printf "\nmeteor test --once --driver-package=dispatch:mocha\n\n"
-meteor test --once --driver-package=dispatch:mocha --settings meteor_settings.json
+printf "\nRunning meteor CI tests on nightmare\n\n"
+meteor npm run test:nightmare
 
 # run npm install in bundle
 printf "\n[-] Running npm install in the server bundle...\n\n"
