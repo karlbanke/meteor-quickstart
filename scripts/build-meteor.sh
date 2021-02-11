@@ -28,8 +28,8 @@ meteor build --directory $APP_BUNDLE_DIR
 
 printf "\nStarting mongo for tests\n\n"
 mongod --storageEngine=wiredTiger > /dev/null 2>&1 &
-printf "\nRunning meteor CI tests on nightmare\n\n"
-meteor npm run testonce
+printf "\nRunning meteor CI tests docker\n\n"
+meteor npm run testonce:docker
 
 # run npm install in bundle
 printf "\n[-] Running npm install in the server bundle...\n\n"
