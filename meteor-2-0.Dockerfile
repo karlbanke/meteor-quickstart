@@ -13,7 +13,6 @@ ENV GOSU_VERSION=1.10 \
 
 # Add entrypoint and build scripts
 COPY scripts $BUILD_SCRIPTS_DIR
-COPY scripts/python/requirements.txt $BUILD_SCRIPTS_DIR/requirements.txt
 RUN chmod -R 750 $BUILD_SCRIPTS_DIR
 
 # Define all --build-arg options
@@ -46,9 +45,11 @@ RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y $APT_GE
 
 
 RUN apt-get update -y && apt-get install -y python3-pip
-RUN pip3 install -r $BUILD_SCRIPTS_DIR/requirements.txt
+RUN pip3 install -r $BUILD_SCRIPTS_DIR/python/requirements.txt
 
 RUN python3 $BUILD_SCRIPTS_DIR/python/fetch-parameters.py
+COPY env.list $BUILD_SCRIPTS_DIR
+RUN $(cat $BUILD_SCRIPTS_DIR/env.list | while read line; do out+="--env $line"; done; echo $out; out="")
 
 # install all dependencies, build app, clean up
 RUN mkdir -p $APP_SOURCE_DIR && \

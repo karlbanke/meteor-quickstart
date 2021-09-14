@@ -10,22 +10,19 @@ def getEnvironmentParameters():
     mongodbUri=""
     userAdminRootUrl=""
     userExpiredQueueUrl=""
-    f= open("env.json","w+")
-    f.write("{ \n")
+    f= open("env.list","w+")
     for p in result["Parameters"]:
         if p["Name"] == mongodbUriParameter:
             mongodbUri = p["Value"]
-            f.write("\"MONGO_URL\": \"%s\", \n"%(mongodbUri))
+            f.write("MONGO_URL= %s \n"%(mongodbUri))
         if p["Name"] == userAdminRootUrlParameter:
             userAdminRootUrl = p["Value"]
-            f.write("\"USER_ADMIN_ROOT_URL\": \"%s\", \n"%(userAdminRootUrl))
+            f.write("USER_ADMIN_ROOT_URL= %s \n"%(userAdminRootUrl))
         if p["Name"] == userExpiredQueueUrlParameter:
             userExpiredQueueUrl = p["Value"]
-            f.write("\"USER_EXPIRED_QUEUE_URL\": \"%s\" \n"%(userExpiredQueueUrl))
-    f.write("}")
+            f.write("USER_EXPIRED_QUEUE_URL= %s \n"%(userExpiredQueueUrl))
     f.close()
     keyValue={"mongodbUri": mongodbUri, "userAdminRootUrl":userAdminRootUrl, "userExpiredQueueUrl": userExpiredQueueUrl}
-    print(keyValue)
     return keyValue
 
 def get_parameters(parameter_names):
@@ -44,10 +41,10 @@ def get_parameters(parameter_names):
 
 def main():
     os.environ['SERVICE_NAME'] = "audio-hub-user-administration"
-    os.environ['APPLICATION_ENV'] = "APPLICATION_ENV"
+    os.environ['APPLICATION_ENV'] = "devel"
     os.environ['AWS_ACCESS_KEY_ID'] = "AWS_ACCESS_KEY_ID"
-    os.environ['AWS_SECRET_ACCESS_KEY'] = "AWS_SECRET_ACCESS_KEY/keyID"
-    getEnvironmentParameters()
+    os.environ['AWS_SECRET_ACCESS_KEY'] = "AWS_SECRET_ACCESS_KEY"
+    return getEnvironmentParameters()
 
 
 if __name__ == '__main__':
