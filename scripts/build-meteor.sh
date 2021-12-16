@@ -18,11 +18,7 @@ chown -R node:node /opt/nodejs /opt/meteor
 sudo su - node -s /bin/bash -c 'npm install --global node-gyp'
 
 # 
-sudo su - node -s /bin/bash -c 'npm install --global npm-cli-login'
-
 env 
-
-/opt/nodejs/bin/npm-cli-login
 
 # Install app deps
 printf "\n[-] Running npm install in app directory...\n\n"
