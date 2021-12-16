@@ -16,7 +16,9 @@ wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/downloa
 
 export GNUPGHOME="$(mktemp -d)"
 
-gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
+echo "buster-install-deps.sh: Add keyserver"
+gpg --keyserver keys.gnupg.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
+echo "buster-install-deps.sh: Verify deps"
 gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu
 
 rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc
