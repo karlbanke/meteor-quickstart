@@ -17,6 +17,9 @@ chown -R node:node /opt/nodejs /opt/meteor
 # Enabling implicit installation of fibers
 sudo su - node -s /bin/bash -c 'npm install --global node-gyp'
 
+#download wget
+apt-get -y update
+apt-get -y install  curl wget
 
 # Download and Install chromedriver
 wget -N https://chromedriver.storage.googleapis.com/96.0.4664.45/chromedriver_linux64.zip -P ~/
