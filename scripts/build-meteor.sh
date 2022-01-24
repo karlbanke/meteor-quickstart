@@ -31,10 +31,9 @@ sudo chmod 0755 /usr/bin/chromedriver
 
 
 # Install chrome browser
-curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
-apt-get -y update
-apt-get -y install google-chrome-stable
+wget http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_96.0.4664.45-1_amd64.deb
+apt-get install ./google-chrome-stable_96.0.4664.45-1_amd64.deb
+
 
 # 
 env 
