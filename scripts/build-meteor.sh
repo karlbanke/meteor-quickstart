@@ -32,7 +32,7 @@ sudo chmod 0755 /usr/bin/chromedriver
 
 # Install chrome browser
 wget http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_96.0.4664.45-1_amd64.deb
-apt-get install ./google-chrome-stable_96.0.4664.45-1_amd64.deb
+apt-get install -y  ./google-chrome-stable_96.0.4664.45-1_amd64.deb
 
 
 # 
