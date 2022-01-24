@@ -17,6 +17,17 @@ chown -R node:node /opt/nodejs /opt/meteor
 # Enabling implicit installation of fibers
 sudo su - node -s /bin/bash -c 'npm install --global node-gyp'
 
+#download curl and wget
+apt-get -y update
+apt-get -y install  curl wget
+
+
+# Install chrome browser
+curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+apt-get -y update
+apt-get -y install google-chrome-stable
+
 # 
 env 
 
