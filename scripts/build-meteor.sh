@@ -17,9 +17,9 @@ chown -R node:node /opt/nodejs /opt/meteor
 # Enabling implicit installation of fibers
 sudo su - node -s /bin/bash -c 'npm install --global node-gyp'
 
-#download curl and wget
+#download wget
 apt-get -y update
-apt-get -y install  curl wget
+apt-get -y install  curl wget unzip
 
 
 # Install chrome browser
