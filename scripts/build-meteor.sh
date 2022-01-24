@@ -21,6 +21,13 @@ sudo su - node -s /bin/bash -c 'npm install --global node-gyp'
 apt-get -y update
 apt-get -y install  curl wget unzip
 
+
+# Install chrome browser
+curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+apt-get -y update
+apt-get -y install google-chrome-stable
+
 # 
 env 
 
@@ -36,8 +43,6 @@ meteor build --directory $APP_BUNDLE_DIR
 printf "\nStarting mongo for tests\n\n"
 mongod --storageEngine=wiredTiger > /dev/null 2>&1 &
 printf "\nRunning meteor CI tests docker\n\n"
-
-export ROOT_URL=http://$(hostname -f):3000
 meteor npm run testonce:docker
 
 # run npm install in bundle
