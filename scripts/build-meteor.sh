@@ -21,20 +21,6 @@ sudo su - node -s /bin/bash -c 'npm install --global node-gyp'
 apt-get -y update
 apt-get -y install  curl wget unzip
 
-# Download and Install chromedriver
-wget -N https://chromedriver.storage.googleapis.com/96.0.4664.45/chromedriver_linux64.zip -P ~/
-unzip ~/chromedriver_linux64.zip -d ~/
-rm ~/chromedriver_linux64.zip
-sudo mv -f ~/chromedriver /usr/bin/chromedriver
-sudo chown root:root /usr/bin/chromedriver
-sudo chmod 0755 /usr/bin/chromedriver
-
-
-# Install chrome browser
-wget http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_96.0.4664.45-1_amd64.deb
-apt-get install -y  ./google-chrome-stable_96.0.4664.45-1_amd64.deb
-
-
 # 
 env 
 
@@ -50,6 +36,8 @@ meteor build --directory $APP_BUNDLE_DIR
 printf "\nStarting mongo for tests\n\n"
 mongod --storageEngine=wiredTiger > /dev/null 2>&1 &
 printf "\nRunning meteor CI tests docker\n\n"
+
+export ROOT_URL=http://$(hostname -f):3000
 meteor npm run testonce:docker
 
 # run npm install in bundle
