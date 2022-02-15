@@ -35,9 +35,6 @@ ENV METEOR_VERSION ${METEOR_VERSION:-2.5.3}
 ONBUILD ARG NPM_TOKEN
 ONBUILD ENV NPM_TOKEN $NPM_TOKEN
 
-ONBUILD ARG NPM_CONNECT_TOKEN
-ONBUILD ENV NPM_CONNECT_TOKEN $NPM_CONNECT_TOKEN
-
 # optionally custom apt dependencies at app build time
 RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y $APT_GET_INSTALL; fi
 
