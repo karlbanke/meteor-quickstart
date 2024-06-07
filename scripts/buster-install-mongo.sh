@@ -8,7 +8,7 @@ fi
 
 printf "\n[-] Installing MongoDB ${MONGO_VERSION}...\n\n"
 
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 656408E390CFB1F5
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B00A0BD1E2C63C11
 
 echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/$MONGO_MAJOR main" > /etc/apt/sources.list.d/mongodb-org.list
 
