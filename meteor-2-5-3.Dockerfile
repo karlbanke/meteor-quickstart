@@ -4,8 +4,8 @@ MAINTAINER Karl Banke <banke@mecom.de>
 RUN groupadd -r node && useradd -m -g node node
 
 ENV GOSU_VERSION=1.10 \
-    MONGO_VERSION=4.4.20 \
-    MONGO_MAJOR=4.4 \
+    MONGO_VERSION=5.0.27 \
+    MONGO_MAJOR=5.0 \
     MONGO_PACKAGE="mongodb-org" \
     APP_SOURCE_DIR="/opt/meteor/src" \
     APP_BUNDLE_DIR="/opt/meteor/dist" \
