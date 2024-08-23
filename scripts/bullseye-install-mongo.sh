@@ -10,6 +10,7 @@ printf "\n[-] Installing MongoDB ${MONGO_VERSION}...\n\n"
 
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B00A0BD1E2C63C11
 
+# While MongoDB is serving the apt repo for buster builds, there's no reason to switch to bullseye since it's simply the same oackages
 echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/$MONGO_MAJOR main" > /etc/apt/sources.list.d/mongodb-org.list
 
 apt-get update
