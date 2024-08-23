@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 MAINTAINER Karl Banke <banke@mecom.de>
 
 RUN groupadd -r node && useradd -m -g node node

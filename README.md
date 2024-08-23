@@ -22,13 +22,13 @@ docker build -t yourname/app .
 ### Ackknowledgement
 
 This container and its source code is based on Jeremy Shimko's [meteor-launchpad](https://github.com/jshimko/meteor-launchpad). 
-It's goal is to provide a base container that enables somewhat faster and better controlled builds by pre installing
+Its goal is to provide a base container that enables somewhat faster and better controlled builds by pre-installing
 the required software into the base container. It also runs Unit Tests by executing meteor test during
 building the container. 
 
 ### Meteor Version
 
-Currently this container preinstalls Meteor 1.6. 
+Currently, this container preinstalls Meteor 1.6. 
 
 There is a separate Dockerfile that preinstalls Meteor 2.6 alongside Mongo 4.2.8, see above.
 

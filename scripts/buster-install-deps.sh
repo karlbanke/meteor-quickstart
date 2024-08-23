@@ -6,7 +6,7 @@ printf "\n[-] Installing base OS dependencies...\n\n"
 
 apt-get update -y
 
-apt-get install -y --no-install-recommends sudo curl ca-certificates bzip2 bsdtar gcc g++ make build-essential python git wget gnupg
+apt-get install -y --no-install-recommends sudo curl ca-certificates bzip2 libarchive-tools gcc g++ make build-essential python git wget gnupg
 apt-get install -y xauth libgtk2.0-0 libgconf-2-4 libasound2 libxtst6 libxss1 libnss3 xvfb
 
 dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')"
