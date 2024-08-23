@@ -41,9 +41,9 @@ RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y $APT_GE
 # install all dependencies, build app, clean up
 RUN mkdir -p $APP_SOURCE_DIR && \
     cd $APP_SOURCE_DIR && \
-       $BUILD_SCRIPTS_DIR/buster-install-deps.sh && \
+       $BUILD_SCRIPTS_DIR/bullseye-install-deps.sh && \
        $BUILD_SCRIPTS_DIR/install-node.sh && \
-       $BUILD_SCRIPTS_DIR/buster-install-mongo.sh && \
+       $BUILD_SCRIPTS_DIR/bullseye-install-mongo.sh && \
        $BUILD_SCRIPTS_DIR/install-meteor.sh 
 
 # copy the app to the container
