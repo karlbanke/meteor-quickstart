@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM public.ecr.aws/debian/debian:bullseye-slim
 MAINTAINER Karl Banke <banke@mecom.de>
 
 RUN groupadd -r node && useradd -m -g node node
