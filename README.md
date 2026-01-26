@@ -13,7 +13,7 @@ Then you can build the image with:
 ```sh
 docker build -t yourname/app .
 ```
-### Ackknowledgement
+### Acknowledgement
 
 This container and its source code is based on Jeremy Shimko's [meteor-launchpad](https://github.com/jshimko/meteor-launchpad). 
 Its goal is to provide a base container that enables somewhat faster and better controlled builds by pre-installing
@@ -22,7 +22,7 @@ building the container.
 
 ### Meteor Version
 
-Currently, this container preinstalls Meteor 2.5.3 alongside Mongo 5.0.27.
+Currently, this container preinstalls Meteor 2.5.3, using MongoDB 8.2.3 for build tests.
 
 ### Run
 
