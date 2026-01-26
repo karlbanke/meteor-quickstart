@@ -1,11 +1,11 @@
-FROM public.ecr.aws/debian/debian:bullseye-slim
+FROM turicas/python:2.7-slim-bookworm
 MAINTAINER Karl Banke <banke@mecom.de>
 
 RUN groupadd -r node && useradd -m -g node node
 
 ENV GOSU_VERSION=1.10 \
-    MONGO_VERSION=5.0.27 \
-    MONGO_MAJOR=5.0 \
+    MONGO_VERSION=8.2.3 \
+    MONGO_MAJOR=8.2 \
     MONGO_PACKAGE="mongodb-org" \
     APP_SOURCE_DIR="/opt/meteor/src" \
     APP_BUNDLE_DIR="/opt/meteor/dist" \
@@ -41,9 +41,9 @@ RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y $APT_GE
 # install all dependencies, build app, clean up
 RUN mkdir -p $APP_SOURCE_DIR && \
     cd $APP_SOURCE_DIR && \
-       $BUILD_SCRIPTS_DIR/bullseye-install-deps.sh && \
+       $BUILD_SCRIPTS_DIR/bookworm-install-deps.sh && \
        $BUILD_SCRIPTS_DIR/install-node.sh && \
-       $BUILD_SCRIPTS_DIR/bullseye-install-mongo.sh && \
+       $BUILD_SCRIPTS_DIR/bookworm-install-mongo.sh && \
        $BUILD_SCRIPTS_DIR/install-meteor.sh 
 
 # copy the app to the container

@@ -15,7 +15,7 @@ cd $APP_SOURCE_DIR
 # Owner of /opt/nodejs and /opt/meteor has to be node to enable correct global installation
 chown -R node:node /opt/nodejs /opt/meteor
 # Enabling implicit installation of fibers
-sudo su - node -s /bin/bash -c 'npm install --global node-gyp'
+sudo su - node -s /bin/bash -c 'npm install --global node-gyp@3.8.0'
 
 #download wget
 apt-get -y update
