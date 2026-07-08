@@ -34,6 +34,16 @@ env
 # Install app deps
 printf "\n[-] Running npm install in app directory...\n\n"
 meteor npm install
+mkdir -p /tmp/basic-auth-patch && \
+    cd /tmp/basic-auth-patch && \
+    npm install basic-auth-connect@1.1.0 && \
+    TARGET=$(find /root/.meteor/packages/webapp -name "node_modules" -type d | head -1) && \
+    cp -r /tmp/basic-auth-patch/node_modules/basic-auth-connect/. $TARGET/basic-auth-connect/ && \
+    cp -r /tmp/basic-auth-patch/node_modules/tsscmp $TARGET/tsscmp && \
+    rm -rf /tmp/basic-auth-patch && \
+    echo "Patched version:" && \
+    cat $TARGET/basic-auth-connect/package.json | grep '"version"'
+cd $APP_SOURCE_DIR
 
 # build the bundle
 printf "\n[-] Building Meteor application...\n\n"

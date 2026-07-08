@@ -32,9 +32,6 @@ ENV TOOL_NODE_FLAGS $TOOL_NODE_FLAGS
 ARG METEOR_VERSION
 ENV METEOR_VERSION ${METEOR_VERSION:-2.5.3}
 
-ONBUILD ARG NPM_TOKEN
-ONBUILD ENV NPM_TOKEN $NPM_TOKEN
-
 # optionally custom apt dependencies at app build time
 RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y $APT_GET_INSTALL; fi
 
@@ -48,6 +45,8 @@ RUN mkdir -p $APP_SOURCE_DIR && \
 
 # copy the app to the container
 ONBUILD COPY . $APP_SOURCE_DIR
+
+ONBUILD RUN echo "Hallo Henning"
 
 # build the app and clean up
 ONBUILD RUN cd $APP_SOURCE_DIR && \
